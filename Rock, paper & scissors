@@ -1,0 +1,25 @@
+import random
+print('Lets play a game! You can choice only one:')
+options = ['paper', 'rock', 'scissors']
+pp,mp = 0,0
+while not pp > 3 or mp > 3:
+    pc = input('Paper, rock or scissors? ')
+    mc = random.choice(options)
+    if not pc in options:
+        print('\n?\nTry typing again\n')
+    else:
+        print(f'\nPlayer choice: {pc}')
+        print(f'Compurter choice: {mc}')
+        if pc == mc:
+            print('Draw!')
+        if (pc,mc) in [('paper','rock'),('rock','scissors'),('scissors','paper')]:
+            pp += 1
+            print('\nYou wins this one')
+        elif (mc,pc) in [('paper','rock'),('rock','scissors'),('scissors','paper')]:
+            mp += 1
+            print('\nComputer wins this one')
+    print(f'\nPlayer points: {pp}')
+    print(f'Computer points: {mp}\n')
+    if mp >= 3:
+        print('\nSkill issue tbh')
+        break
