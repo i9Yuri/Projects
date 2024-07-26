@@ -1,0 +1,87 @@
+saldo = 1000
+btc_balance = 0
+loop = 1
+loop2 = 1
+
+while loop2 == 1:
+  nome, cpf = input("Digite seu nome e CPF: ").split()
+  if len(cpf) == 11:
+   loop2 = 0
+   print(f'\nBem vindo à Binance, {nome}!\n')
+  else:
+   print("\nCPF inválido, tente novamente.\n")
+
+while loop == 1:
+  action = input('Qual operação deseja realizar?\n \nComprar p2p (Peer to Peer)\nVender p2p\nConsultar saldo\nDeposito\nSaque\nTransferencia\nSair\n')
+
+  if action == 'comprar p2p':
+    valor = float(input('Digite o valor da compra em fiat: '))
+    if valor <= saldo:
+      saldo -= valor
+      btc_balance = valor / 353569
+      print(f'\nCompra p2p realizada com sucesso!\n \nSaldo atual:\n \nR$ {saldo:.2f}\n{btc_balance:.8f} Bitcoins\n \nLembre-se de sempre guardar seus satochis em um hardwallet!\n ')
+    else:
+      print('Saldo insuficiente.')
+    action2 = input('Deseja realizar outra operação? ')
+    if action2 == 'sim':
+      loop = 1
+    elif action2 == 'não':
+      loop = 0
+
+  if action == 'vender p2p':
+    valor = float(input('Digite o valor da venda em BTC: '))
+    if valor <= btc_balance:
+      btc_balance -= valor
+      saldo = valor * 353569
+      print(f'\nVenda p2p realizada com sucesso!\n \nSaldo atual:\n \nR$ {saldo:.2f}\n{btc_balance:.8f} Bitcoins\n \nLembre-se de sempre guardar seus satochis em um hardwallet!\n ')
+    else:
+      print('Bitcoins insuficientes.')
+    action2 = input('Deseja realizar outra operação? ')
+    if action2 == 'sim':
+      loop = 1
+    elif action2 == 'não':
+      loop = 0
+      
+  if action == 'consultar saldo':
+    print(f'R$ {saldo}')
+    print(f'{btc_balance:.2f} BTC')
+    action2 = input('Deseja realizar outra operação? ')
+    if action2 == 'sim':
+      loop = 1
+    elif action2 == 'não':
+      loop = 0
+      
+  if action == 'deposito':
+    valor = float(input('Digite o quantidade a ser depositada: '))
+    saldo += valor
+    print(f'Saldo = R$ {saldo:.2f}')
+    action2 = input('Deseja realizar outra operação? ')
+    if action2 == 'sim':
+      loop = 1
+    elif action2 == 'não':
+      loop = 0
+      
+  if action == 'saque':
+    valor = float(input('Digite o quantidade a ser sacada: '))
+    saldo -= valor
+    print(f'Saldo = R$ {saldo:.2f}')
+    action2 = input('Deseja realizar outra operação? ')
+    if action2 == 'sim':
+      loop = 1
+    elif action2 == 'não':
+      loop = 0
+      
+  if action == 'transferencia':
+    valor = float(input('Digite o quantidade a ser transferida: '))
+    saldo -= valor
+    print(f'Saldo = R$ {saldo:.2f}')
+    action2 = input('Deseja realizar outra operação? ')
+    if action2 == 'sim':
+      loop = 1
+    elif action2 == 'não':
+      loop = 0
+      
+  if action == 'sair':
+    loop = 0
+
+print('Obrigado por utilizar nossos serviços!')
