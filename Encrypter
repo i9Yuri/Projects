@@ -1,33 +1,22 @@
 import random
 import string
-
 caracteres = ' ' + string.punctuation + string.digits + string.ascii_letters
 caracteres = list(caracteres)
 key = caracteres.copy()
-
 random.shuffle(key)
-
-# print(caracteres)
-# print(key)
-
 #ENCRYPT
 texto_original = input('Escreva uma frase para ser criptografada: ')
 texto_encriptado = ''
-
 for letra in texto_original:
     index = caracteres.index(letra)
     texto_encriptado += key[index]
-
 print(f'Texto original: {texto_original}')
 print(f'Texto encriptado: {texto_encriptado}')
-
 #DECRYPT
 texto_encriptado = input('Escreva uma frase para ser descriptografada: ')
 texto_original = ''
-
 for letra in texto_encriptado:
     index = key.index(letra)
     texto_original += caracteres[index]
-
 print(f'Texto criptografado: {texto_encriptado}')
 print(f'Texto descriptografado: {texto_original}')
